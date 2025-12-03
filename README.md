@@ -29,7 +29,7 @@ The token generation script is part of the official Flattrade API repository. Yo
 1.  Open the **Terminal** tab at the bottom of PyCharm.
 2.  Copy and paste the following commands one by one, pressing Enter after each:
     ```bash
-    pip install requests pyyaml
+    pip install requests pyyaml pandas pandas-ta
     ```
     ```bash
     pip install https://github.com/flattrade/pythonAPI/raw/main/dist/NorenRestApi-0.0.29-py3-none-any.whl
