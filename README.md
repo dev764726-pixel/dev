@@ -29,7 +29,7 @@ The token generation script is part of the official Flattrade API repository. Yo
 1.  Open the **Terminal** tab at the bottom of PyCharm.
 2.  Copy and paste the following commands one by one, pressing Enter after each:
     ```bash
-    pip install requests pyyaml
+    pip install requests pyyaml pandas pandas-ta
     ```
     ```bash
     pip install https://github.com/flattrade/pythonAPI/raw/main/dist/NorenRestApi-0.0.29-py3-none-any.whl
@@ -74,3 +74,11 @@ You must perform these steps every day you wish to run the bot.
 2.  Right-click anywhere inside the code and select **Run 'trading_bot'**.
 
 The bot will start, set its session using your token, and begin executing the strategy. Remember to generate and paste a new token every day!
+
+---
+
+## Part 4: VPS Deployment
+
+For instructions on how to deploy and run this bot on a Virtual Private Server (VPS) for persistent, 24/7 operation, please see the detailed guide:
+
+- [**VPS Deployment Guide**](./VPS_DEPLOYMENT_GUIDE.md)
