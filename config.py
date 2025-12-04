@@ -1,31 +1,69 @@
 # Flattrade API Configuration
 
 # --- Daily Credentials ---
-# IMPORTANT: The user_token must be generated daily after 5:00 AM IST.
-# Follow the instructions in the README to generate this token.
+# IMPORTANT: The user_token must be generated daily.
 user_id = "YOUR_USER_ID_HERE"
 user_token = "PASTE_YOUR_DAILY_GENERATED_TOKEN_HERE"
-
 
 # --- Strategy Parameters ---
 # Symbols & Indices
 NIFTY50_INDEX = 'NSE|26000'  # Nifty 50 Index Instrument
-NIFTY500_CSV_URL = 'https://archives.nseindia.com/content/indices/ind_nifty500list.csv'
 
-# Time Settings
-ENTRY_TIME = "09:20:00"
+# F&O Stock Universe (a subset for demonstration)
+# In a real scenario, this list would be comprehensive.
+FNO_SYMBOLS = [
+    "ACC", "ADANIENT", "ADANIPORTS", "AMBUJACEM", "APOLLOHOSP",
+    "APOLLOTYRE", "ASHOKLEY", "ASIANPAINT", "AUROPHARMA", "AXISBANK",
+    "BAJAJ-AUTO", "BAJFINANCE", "BAJAJFINSV", "BALKRISIND", "BANDHANBNK",
+    "BANKBARODA", "BHEL", "BHARTIARTL", "BPCL", "BRITANNIA", "CANBK",
+    "CHOLAFIN", "CIPLA", "COALINDIA", "COFORGE", "COLPAL", "CONCOR",
+    "CUMMINSIND", "DABUR", "DEEPAKNTR", "DIVISLAB", "DLF", "DRREDDY",
+    "EICHERMOT", "ESCORTS", "EXIDEIND", "FEDERALBNK", "GAIL", "GLENMARK",
+
+    "GMRINFRA", "GODREJCP", "GODREJPROP", "GRANULES", "GRASIM", "GUJGASLTD",
+    "HAVELLS", "HCLTECH", "HDFCBANK", "HDFCLIFE", "HEROMOTOCO", "HINDALCO",
+    "HINDPETRO", "HINDUNILVR", "ICICIBANK", "ICICIGI", "ICICIPRULI",
+    "IDFCFIRSTB", "IEX", "IGL", "INDIGO", "INDUSINDBK", "INFY", "IOC",
+    "IRCTC", "ITC", "JINDALSTEL", "JSWSTEEL", "JUBLFOOD", "KOTAKBANK",
+    "L&TFH", "LT", "LTIM", "LTTS", "LUPIN", "M&M", "M&MFIN", "MARICO",
+    "MARUTI", "MFSL", "MGL", "MOTHERSON", "MRF", "MUTHOOTFIN", "NATIONALUM",
+    "NAUKRI", "NAVINFLUOR", "NESTLEIND", "NMDC", "NTPC", "ONGC", "PAGEIND",
+    "PEL", "PETRONET", "PFC", "PIDILITIND", "PIIND", "PNB", "POWERGRID",
+    "PVRINOX", "RBLBANK", "RECLTD", "RELIANCE", "SAIL", "SBICARD", "SBILIFE",
+    "SBIN", "SHREECEM", "SIEMENS", "SRF", "SUNPHARMA", "SUNTV", "TATACHEM",
+    "TATACOMM", "TATACONSUM", "TATAMOTORS", "TATAPOWER", "TATASTEEL",
+    "TCS", "TECHM", "TITAN", "TORNTPHARM", "TRENT", "TVSMOTOR", "UBL",
+    "ULTRACEMCO", "UPL", "VEDL", "VOLTAS", "WIPRO", "ZEEL", "ZYDUSLIFE"
+]
+
+
+# Time Settings (IST)
+NIFTY_CHECK_TIME = "09:25:00"
+ENTRY_START_TIME = "09:32:00"
 EXIT_TIME = "15:00:00"
 
-# Strategy Thresholds
-NIFTY_BULLISH_THRESHOLD = 0.0020  # +0.20% for long entry
-NIFTY_BEARISH_THRESHOLD = -0.0020 # -0.20% for short entry
-CANDLE_CROSS_THRESHOLD = 0.0002   # 0.02%
-STOP_LOSS_PERCENT = 0.01          # 1% (absolute value)
+# Strategy Thresholds & Parameters
+NIFTY_BULLISH_THRESHOLD = 0.0020  # +0.20%
+NIFTY_BEARISH_THRESHOLD = -0.0020 # -0.20%
+STOP_LOSS_PERCENT = 0.006         # 0.60%
+TAKE_PROFIT_PERCENT = 0.016       # 1.60%
+TRAILING_STOP_LOSS_ACTIVATE_PERCENT = 0.01 # 1.00% profit
+TRAILING_STOP_LOSS_PERCENT = 0.006         # 0.60% trail
 
 # Order Settings
-MAX_INVESTMENT_PER_STOCK = 20000
-MAX_STOCKS_TO_TRADE = 5
+MAX_INVESTMENT_TRENDING = 20000  # For Bullish/Bearish market
+MAX_INVESTMENT_NEUTRAL = 10000   # For Neutral market
+MAX_STOCKS_PER_LEG = 5           # Max 5 buy and 5 sell trades
+
+# Technical Indicator Parameters
+RSI_PERIOD = 14
+ADX_PERIOD = 14
+CCI_PERIOD = 20
+VOLUME_SMA_PERIOD = 20
+
+# --- Trading Mode ---
+PAPER_TRADING = True  # Set to False for live trading
 
 # Logging
-LOG_LEVEL = "INFO"  # Can be DEBUG, INFO, WARNING, ERROR, CRITICAL
+LOG_LEVEL = "INFO"
 LOG_FILE = "trading_bot.log"
